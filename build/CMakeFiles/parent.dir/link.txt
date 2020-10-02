@@ -1,1 +1,0 @@
-/usr/bin/cc -Wall -pedantic -std=c99   CMakeFiles/parent.dir/src/parent.c.o  -o parent 
