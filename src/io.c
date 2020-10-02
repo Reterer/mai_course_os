@@ -25,11 +25,12 @@ char* get_line(int *len)
     char *line = (char*)malloc(sizeof(char)*cap);
     if(line == NULL)
     {
-     log_error("Не удалось выделить память под строку");    
+     log_error("Не удалось выделить память под строку");
+     return NULL;
     }
     
-    int ch;
-    while((ch = getchar()) != EOF)
+    char ch;
+    while(read(STDIN_FILENO, &ch, 1) == 1)
     {
         line[(*len)++] = ch;
         if(*len >= cap)
@@ -53,7 +54,6 @@ char* get_line(int *len)
 
 void log_error_and_exit(const char *msg)
 {
-    // fprintf(stderr, "%s\n", msg);
     perror(msg);
     exit(1);
 }
@@ -66,5 +66,4 @@ void log_error(const char *msg)
 void log_message(const char* msg)
 {
     write_str(STDERR_FILENO, msg, strlen(msg));
-    // fprintf(stderr, "%s", msg);
 }
