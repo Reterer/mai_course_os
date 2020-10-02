@@ -78,7 +78,7 @@ void close_file_process(const FileProc *fp)
 
 // Если есть ошибка, то выводит сообщение о ней и выходит.
 // Если ошибки нет, то ничего не делает.
-void handle_error_file_process(const FileProc *fp)
+void handle_create_error_file_process(const FileProc *fp)
 {
     if (fp->status == FP_ERR_FORK)
         log_error_and_exit("Ошибка создания процесса");
@@ -111,8 +111,8 @@ int main(int argc, char* argv[])
 
     FileProc fp_small = run_file_process(argv[1]);
     FileProc fp_large = run_file_process(argv[2]);
-    handle_error_file_process(&fp_small);
-    handle_error_file_process(&fp_large);
+    handle_create_error_file_process(&fp_small);
+    handle_create_error_file_process(&fp_large);
 
     int len;
     char* line;

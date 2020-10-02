@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "io.h"
 
 int write_str(int fd, const char *msg, int len)
@@ -24,7 +25,7 @@ char* get_line(int *len)
     char *line = (char*)malloc(sizeof(char)*cap);
     if(line == NULL)
     {
-     log_error("Не удалось выделить память под строку");   
+     log_error("Не удалось выделить память под строку");    
     }
     
     int ch;
@@ -64,5 +65,6 @@ void log_error(const char *msg)
 
 void log_message(const char* msg)
 {
-    fprintf(stderr, "%s", msg);
+    write_str(STDERR_FILENO, msg, strlen(msg));
+    // fprintf(stderr, "%s", msg);
 }
