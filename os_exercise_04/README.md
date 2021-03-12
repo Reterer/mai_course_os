@@ -68,6 +68,7 @@ POSIX функции:
 
 ### Пример работы
 
+```
 reterer@serv:~/OS/os_exercise_04/src$ make
 cc -c -Wall -pedantic -O2 -c -o parent.o parent.c
 cc -c -Wall -pedantic -O2 -c -o io.o io.c
@@ -82,6 +83,7 @@ reterer@serv:~/OS/os_exercise_04/src$ cat small
 lh
 reterer@serv:~/OS/os_exercise_04/src$ cat large
 Hll wrld!
+```
 
 ---
 
